@@ -1,0 +1,32 @@
+@media (max-width: 807px) {
+  body {
+    padding: 0 10px;
+  }
+  /*Logo*/
+  h1 {
+    display: flex;
+    align-items: center;
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    gap: 0.5rem;
+  }
+  svg {
+    vertical-align: middle;
+  }
+  .res-ico {
+    display: flex;
+  }
+  .res-txt {
+    display: none;
+  }
+  /* Hero */
+  main > section:nth-child(1) {
+    from input {
+      display: none;
+    }
+  }
+  #empleosNav .uploadBtn {
+    background: none;
+    color: var(--text-secondary);
+    border: none;
+  }
+}
