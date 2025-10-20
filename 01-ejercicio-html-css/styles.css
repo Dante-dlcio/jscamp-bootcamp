@@ -482,6 +482,7 @@ article {
 
   article:last-child {
     border-bottom: none;
+    box-shadow: none;
   }
 
   h3 {
