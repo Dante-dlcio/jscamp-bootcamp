@@ -1,145 +1,106 @@
 <!-- Aquí el contenido de tu página empleos.html -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="pagina de busqueda de empleos" />
-    <meta name="robots" content="index, follow" />
-    <meta
-      name="theme color"
-      media="(prefers-color-sheme: light)"
-      content="#fffff"
-    />
-    <meta
-      name="theme color"
-      media="(prefers-color-sheme: dark)"
-      content="#121212"
-    />
-    <link rel="icon" href="./images/favicon.svg" type="image/svg+xlm/" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="./responsive.css" />
-    <title>Buscar empleos</title>
-  </head>
-  <body>
-    <header>
-      <nav id="empleosNav" class="navbar">
-        <h4 class="logo">
-          <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="39"
-          height="39"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#09f"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-code"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M7 8l-4 4l4 4" />
-          <path d="M17 8l4 4l-4 4" />
-          <path d="M14 4l-4 16" />
-        </svg>
-          Devjobs
-        </h4>
-        <ul class="navLinks">
-          <li>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="pagina de busqueda de empleos" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme color" media="(prefers-color-sheme: light)" content="#fffff" />
+  <meta name="theme color" media="(prefers-color-sheme: dark)" content="#121212" />
+  <link rel="icon" href="./images/favicon.svg" type="image/svg+xlm/" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./responsive.css" />
+  <title>Buscar empleos</title>
+</head>
+
+<body>
+  <header>
+    <!-- El título de la página no forma parte del nav -->
+    <h4 class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 24 24" fill="none" stroke="#09f"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-code">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M7 8l-4 4l4 4" />
+        <path d="M17 8l4 4l-4 4" />
+        <path d="M14 4l-4 16" />
+      </svg>
+      Devjobs
+    </h4>
+    <!-- El nav solo debe contener los links asociados a la navegación. En este caso, la navegación principal -->
+    <nav id="empleosNav" class="navbar">
+      <ul class="navLinks">
+        <li>
           <a href="./index.html">
-          <svg
-            class="res-ico"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-home-2"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
-            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-            <path d="M10 12h4v4h-4z" />
-          </svg>
-          <span class="res-txt">Inicio</span></a
-        >
-          </li>
-          <li>
-            <a href="./empleos.html">
-          <svg
-            class="res-ico"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-briefcase"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path
-              d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"
-            />
-            <path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" />
-            <path d="M12 12l0 .01" />
-            <path d="M3 13a20 20 0 0 0 18 0" />
-          </svg>
-          <span class="res-txt">Empleos</span></a
-        >
-          </li>
-        </ul>
-        <div class="navActions">
-          <button class="uploadBtn"
-          type="button"
-          onclick="document.getElementById('subircv').click()"
-        >
-        <svg class="res-ico" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-cv"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><path d="M11 12.5a1.5 1.5 0 0 0 -3 0v3a1.5 1.5 0 0 0 3 0" /><path d="M13 11l1.5 6l1.5 -6" /></svg>
+            <svg class="res-ico" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-home-2">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+              <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+              <path d="M10 12h4v4h-4z" />
+            </svg>
+            <span class="res-txt">Inicio</span></a>
+        </li>
+        <li>
+          <a href="./empleos.html">
+            <svg class="res-ico" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-briefcase">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+              <path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" />
+              <path d="M12 12l0 .01" />
+              <path d="M3 13a20 20 0 0 0 18 0" />
+            </svg>
+            <span class="res-txt">Empleos</span></a>
+        </li>
+      </ul>
+    </nav>
+    <div class="navActions">
+      <button class="uploadBtn" type="button" onclick="document.getElementById('subircv').click()">
+        <svg class="res-ico" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-file-cv">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+          <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+          <path d="M11 12.5a1.5 1.5 0 0 0 -3 0v3a1.5 1.5 0 0 0 3 0" />
+          <path d="M13 11l1.5 6l1.5 -6" />
+        </svg>
         <span class="res-txt">Subir CV</span>
-        </button>
-        <input type="file" id="subircv" name="cv" hidden />
-        <img class="userImg" src="./images/user.png" alt="user" />
-      </nav>
-        </div>
-    </header>
-    <main>
-      <article id="searchtl">
-        <h1>Encuentra tu próximo trabajo</h1>
-        <p><small>Explora miles de oportunidades en el sector tecnológico</small> </p>
-      </article>
-      <section>
-        <form role="search">
-            <div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-search"
-          >
+      </button>
+      <!-- Cual es el objetivo de este input? -->
+      <!-- <input type="file" id="subircv" name="cv" hidden /> -->
+      <!-- Cuando trabajamos con imágenes, es importante tener los atributos width y height, para mantener la relación de aspecto mientras la imagen aún no carga. Por otro lado, el `alt` debe contener un texto descriptivo -->
+      <img class="userImg" src="./images/user.png" alt="Avatar del usuario" width="40" height="40" />
+    </div>
+  </header>
+  <main>
+    <!-- La página se puede dividir en dos secciones, la primera con el propósito de buscar empleos, y la segunda con el propósito de mostrarlos -->
+    <section>
+      <!-- No hace falta envolver el h1 y p en un `div` -->
+      <h1>Encuentra tu próximo trabajo</h1>
+      <!-- Small es para especificar que un texto es complementario al contenido al cual está asociado. En este caso, si ya está envuelvo en un `p`, no tiene sentido usarlo -->
+      <p>Explora miles de oportunidades en el sector tecnológico</p>
+      <form role="search">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-search">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
             <path d="M21 21l-6 -6" />
           </svg>
-          <input
-            type="text"
-            placeholder="busca trabajos, empresas o habilidades"
-          />
+          <!-- Para que el formulario pueda obtener el valor del input, es necesario agrear un atributo llamado `name`. Luego, el formulario usará este valor para recoger el dato -->
+          <input type="text" placeholder="busca trabajos, empresas o habilidades" name="buscador" />
         </div>
-          <br/>
-          <div class="filters">
-          <select class="filter" title="tecnologías">
+        <!-- Siempre que se pueda evitar agregar la etiqueta `br`, debemos hacerlo. Podemos crear el espaciado con CSS. `br` puede ser útil cuando queremos dividir un texto en un punto muy concreto -->
+        <div class="filters">
+          <!--  -->
+          <select class="filter" title="tecnologías" name="tecnologias">
             <option value="tecnología">Tecnologías</option>
             <option value="js">JavaScript</option>
             <option value="react">React</option>
@@ -153,107 +114,116 @@
             <option value="azure">Azure</option>
             <option value="GCP">GCP</option>
           </select>
-          <select class="filter" title="ubicación">
+          <select class="filter" title="ubicación" name="ubicacion">
             <option value="ubicación">Ubicación</option>
             <option value="remoto">Remoto</option>
             <option value="ciudad-de-mexico">Ciudad de Mexico</option>
             <option value="guadalajara">Guadalajara</option>
           </select>
-          <select class="filter" title="contrato">
+          <select class="filter" title="contrato" name="contrato">
             <option value="contrato">Tipo de contrato</option>
+            <option value="full-time">Full-time</option>
+            <option value="part-time">Part-time</option>
+            <option value="freelance">Freelance</option>
+            <option value="contract">Contrato</option>
           </select>
-          <select class="filter" title="xp">
+          <select class="filter" title="xp" name="experiencia">
             <option value="xp">Nivel de experiencia</option>
+            <option value="junior">Junior</option>
+            <option value="medio">Medio</option>
+            <option value="senior">Senior</option>
           </select>
-          </div>
-        </form>
-      </section>
-      <section class="results">
-        <h3>Resultados de la búsqueda</h3>
-        <article>
-          <h4>Ingeniero de Software</h4>
-          <small>Tech Solutions Inc | Remoto</small>
-          <p>
-            Buscamos un ingeniero de software con experiencia en desarrollo web
-            y conocimientos en JavaScript, React y Node.js. El candidato ideal
-            debe ser capaz de trabajar en equipo y tener buenas habilidades de
-            comunicación.
-          </p>
-          <a href="./detail.html">Aplicar</a>
-        </article>
-        <article>
-          <h4>Analista de datos</h4>
-          <small>Data Driven Co | Ciudad de México</small>
-          <p>
-            Estamos buscando un analista de datos con experiencia en el manejod
-            e grandes conjuntos de datos y herramientas de visualización. Se
-            requiere conocimiento en SQL, Python y R.
-          </p>
-          <a>Aplicar</a>
-        </article>
-        <article>
-          <h4>Desarrollador de Aplicaciones Móviles</h4>
-          <small>Mobile Apps Ltd. | Guadalajara</small>
-          <p>
-            Buscamos un desaarrollador de palicaciones móviles con experiencia
-            en iOS y/o Android. El candidato debe tener conocimientos en Swift,
-            Kotlin y el desarrollo de interfaces de usuario.
-          </p>
-          <a>Aplicar</a>
-        </article>
-        <article>
-          <h4>Ingeniero de DevOps</h4>
-          <small>Cloud Services SA | Remoto</small>
-          <p>
-            Estamos buscando un ingeniero de DevOps con experiencia en la
-            gestión de insfraestructuras en la nube, automatización de procesos
-            y herramientas de integración continua. Se requiere conocimiento en
-            AWS, Azure o GCP.
-          </p>
-          <a>Aplicar</a>
-        </article>
-      </section>
-    </main>
-    <footer>
-      <nav class="pagination">
-        <a href=""
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M15 6l-6 6l6 6" /></svg
-        ></a>
-        <a class="selected" >1</a>
-        <a href="">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href=""
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M9 6l6 6l-6 6" /></svg
-        ></a>
-      </nav>
-    </footer>
-  </body>
+        </div>
+      </form>
+    </section>
+    <section class="results">
+      <!-- Si no hay un `h2` previo a este encabezado, entonces podemos usarlo. No es recomendable saltearlos un nivel -->
+      <h2>Resultados de la búsqueda</h2>
+      <!-- Los empleos se pueden interpretar como una lista de resultados -->
+      <ul>
+        <li>
+          <article>
+            <!-- Cambiamos el `h4` por el `h3` por la misma razón, no hay un `h3` previo -->
+            <h3>Ingeniero de Software</h3>
+            <small>Tech Solutions Inc | Remoto</small>
+            <p>
+              Buscamos un ingeniero de software con experiencia en desarrollo web
+              y conocimientos en JavaScript, React y Node.js. El candidato ideal
+              debe ser capaz de trabajar en equipo y tener buenas habilidades de
+              comunicación.
+            </p>
+            <a href="./detail.html">Aplicar</a>
+          </article>
+        </li>
+        <li>
+          <article>
+            <h3>Analista de datos</h3>
+            <small>Data Driven Co | Ciudad de México</small>
+            <p>
+              Estamos buscando un analista de datos con experiencia en el manejod
+              e grandes conjuntos de datos y herramientas de visualización. Se
+              requiere conocimiento en SQL, Python y R.
+            </p>
+            <!-- Siempre que agreguemos una etiqueta anchor, debe tener el atributo `href` -->
+            <a href="./detail.html">Aplicar</a>
+          </article>
+        </li>
+        <li>
+          <article>
+            <h3>Desarrollador de Aplicaciones Móviles</h3>
+            <small>Mobile Apps Ltd. | Guadalajara</small>
+            <p>
+              Buscamos un desaarrollador de palicaciones móviles con experiencia
+              en iOS y/o Android. El candidato debe tener conocimientos en Swift,
+              Kotlin y el desarrollo de interfaces de usuario.
+            </p>
+            <a href="./detail.html">Aplicar</a>
+          </article>
+        </li>
+        <li>
+          <article>
+            <h3>Ingeniero de DevOps</h3>
+            <small>Cloud Services SA | Remoto</small>
+            <p>
+              Estamos buscando un ingeniero de DevOps con experiencia en la
+              gestión de insfraestructuras en la nube, automatización de procesos
+              y herramientas de integración continua. Se requiere conocimiento en
+              AWS, Azure o GCP.
+            </p>
+            <a href="./detail.html">Aplicar</a>
+          </article>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <nav class="pagination">
+      <!--
+      Si un anchor o button no tienen un texto dentro que indique su propósito, debemos indicarlo de alguna manera, para eso, usamos los atributos:
+      aria-label, que permite que los lectores de pantalla entiendan cual es el propósito del elemento
+      title, que muestra un tooltip con el valor a los usuarios cuando hacen hover sobre el elemento
+      -->
+      <a href="" aria-label="Ir a la página anterior de los resultados de búsqueda" title="Anterior"><svg
+          xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M15 6l-6 6l6 6" />
+        </svg></a>
+      <a class="selected">1</a>
+      <a href="">2</a>
+      <a href="">3</a>
+      <a href="">4</a>
+      <a href="">5</a>
+      <a href="" aria-label="Ir a la página siguiente de los resultados de búsqueda" title="Siguiente"><svg
+          xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M9 6l6 6l-6 6" />
+        </svg></a>
+    </nav>
+  </footer>
+</body>
+
 </html>

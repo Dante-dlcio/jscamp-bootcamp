@@ -120,7 +120,6 @@ header div a {
 
 /* Hero */
 main > section:nth-child(1) {
-  height: 500px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -319,7 +318,7 @@ article {
   }
 }
 
-#empleosNav {
+header {
   width: 100%;
   display: flex;
   .logo {
@@ -350,10 +349,15 @@ article {
       Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
       sans-serif;
     color: var(--primary-light);
-    width: 4rem;
     height: 1.6rem;
     border-radius: 0.5rem;
     border-style: none;
+    padding-inline: .5rem;
+    padding-block: .25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
   }
   .uploadBtn:hover {
     background-color: var(--primary-light);
@@ -453,9 +457,12 @@ article {
 .filters {
   background-color: var(--background);
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   box-shadow: none;
   margin-bottom: 3rem;
+  padding-inline: 0;
+  padding-block: 1rem;
 
   .filter {
     height: 1.7rem;
@@ -469,12 +476,13 @@ article {
 }
 
 .results {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 98vw;
-  margin: auto;
-  border-radius: 2rem;
+  margin-inline: auto;
+  max-width: 1280px;
+
+  ul {
+    list-style: none;
+    margin-inline: auto;
+  }
 
   article:nth-of-type(1) {
     border-radius: 4px 4px 0 0;
@@ -485,11 +493,6 @@ article {
     box-shadow: none;
   }
 
-  h3 {
-    display: flex;
-    justify-content: center;
-  }
-
   article {
     position: relative;
     overflow: hidden;
@@ -498,11 +501,14 @@ article {
     border-radius: 0;
     border: 1px solid rgba(255, 255, 255, 0.1);
     margin: 0;
-    max-width: 50rem;
+
+    p {
+      max-width: 64ch;
+    }
 
     a {
       position: absolute;
-      right: 1rem;
+      right: 2rem;
       top: 2rem;
       display: flex;
       align-items: center;
@@ -512,8 +518,7 @@ article {
       color: var(--text-primary);
       border-radius: 0.2rem;
       border: none;
-      width: 4rem;
-      height: 1.4rem;
+      padding: 0.5rem 1rem;
       &:hover {
         color: #09f;
         background-color: var(--text-primary);
