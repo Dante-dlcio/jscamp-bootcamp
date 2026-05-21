@@ -357,11 +357,29 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    cursor: pointer;
+
+  }
+
+  .uploadBtn:focus-within {
+    outline: 2px solid white;
+    outline-offset: 2px;
   }
   .uploadBtn:hover {
     background-color: var(--primary-light);
     color: rgb(19, 50, 81);
+  }
+
+  .uploadBtn input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
   }
 
   .userImg {
