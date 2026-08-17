@@ -63,7 +63,7 @@
     "id": "c1b65b42-68c5-4f1c-a8c2-8d52c5a7a5d1",
     "titulo": "Administrador de Bases de Datos",
     "empresa": "Secure Data Corp.",
-    "ubicacion": "Buenos Aires",
+    "ubicacion": "Remoto",
     "descripcion": "Se busca un administrador de bases de datos con experiencia en PostgreSQL y MySQL. El candidato deberá asegurar la disponibilidad, seguridad y rendimiento de las bases de datos de producción.",
     "data": {
       "technology": ["python", "java"],
@@ -87,7 +87,7 @@
     "id": "fe7b2c54-4f47-4e2b-9e87-2b5413a6b24f",
     "titulo": "Product Manager",
     "empresa": "NextGen Technologies",
-    "ubicacion": "Madrid",
+    "ubicacion": "Remoto",
     "descripcion": "Estamos buscando un Product Manager con experiencia en la definición y lanzamiento de productos digitales. Se requiere capacidad analítica, liderazgo y conocimiento en metodologías ágiles.",
     "data": {
       "technology": ["javascript", "react"],
@@ -99,7 +99,7 @@
     "id": "a71f7a92-56d9-4b42-9f16-cb29b40e5f2c",
     "titulo": "Frontend Developer",
     "empresa": "Bright Web Studio",
-    "ubicacion": "Valencia",
+    "ubicacion": "Monterrey",
     "descripcion": "Buscamos un desarrollador frontend con experiencia en React, TypeScript y Tailwind CSS. Se valorará conocimiento en optimización de rendimiento y accesibilidad web.",
     "data": {
       "technology": ["react", "javascript"],
@@ -111,7 +111,7 @@
     "id": "f91e4c7b-3840-43da-8ad7-3a52e2a8cf1d",
     "titulo": "Backend Developer",
     "empresa": "APIWorks",
-    "ubicacion": "Bogotá",
+    "ubicacion": "Ciudad de México",
     "descripcion": "Estamos buscando un desarrollador backend con experiencia en Node.js, Express y bases de datos NoSQL. Se requiere conocimiento en arquitectura de microservicios.",
     "data": {
       "technology": ["nodejs", "javascript"],
@@ -135,7 +135,7 @@
     "id": "e8d13c45-36cb-46cf-8f9d-8a0a7b532b8b",
     "titulo": "QA Automation Engineer",
     "empresa": "Quality First",
-    "ubicacion": "Lima",
+    "ubicacion": "Guadalajara",
     "descripcion": "Se busca ingeniero de QA con experiencia en automatización de pruebas utilizando herramientas como Selenium, Cypress o Playwright. Conocimiento deseado en CI/CD.",
     "data": {
       "technology": ["javascript", "nodejs"],
@@ -147,7 +147,7 @@
     "id": "d2e93b8a-0b41-4d09-9a52-36a0f418d493",
     "titulo": "Administrador de Sistemas",
     "empresa": "InfraTech Global",
-    "ubicacion": "Santiago de Chile",
+    "ubicacion": "Barcelona",
     "descripcion": "Buscamos un administrador de sistemas con experiencia en Linux, Docker y monitoreo de servidores. Conocimiento en scripting Bash o Python será un plus.",
     "data": {
       "technology": ["python", "ruby"],
@@ -159,7 +159,7 @@
     "id": "cc0c1fae-4e85-4e2c-9b02-f12f9df8a2c9",
     "titulo": "Scrum Master",
     "empresa": "Agile Minds",
-    "ubicacion": "Madrid",
+    "ubicacion": "Remoto",
     "descripcion": "Estamos buscando un Scrum Master con experiencia en metodologías ágiles y gestión de equipos multidisciplinarios. Certificación Scrum Master deseable.",
     "data": {
       "technology": ["javascript"],
