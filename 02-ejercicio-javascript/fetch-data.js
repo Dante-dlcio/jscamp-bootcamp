@@ -29,5 +29,3 @@ fetch("./data.json")
       jobsList.appendChild(li);
     }),
   );
-
-//Eventualmente completo
