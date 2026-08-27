@@ -1,3 +1,7 @@
+import jobs from "../data.json";
+
+console.log(jobs);
+
 export function SearchResultSection() {
   return (
     <>
