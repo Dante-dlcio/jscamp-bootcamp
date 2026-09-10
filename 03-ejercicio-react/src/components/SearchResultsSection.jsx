@@ -1,13 +1,7 @@
-import { useState } from "react";
-import jobs from "../data.json";
 import { JobListings } from "./JobListings";
 import { Pagination } from "./Pagination";
 
-export function SearchResultSection() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+export function SearchResultSection({ jobs, currentPage, onPageChange }) {
   return (
     <>
       <section>
@@ -16,7 +10,7 @@ export function SearchResultSection() {
         <Pagination
           currentPage={currentPage}
           totalPages={5}
-          onPageChange={handlePageChange}
+          onPageChange={onPageChange}
         />
       </section>
     </>

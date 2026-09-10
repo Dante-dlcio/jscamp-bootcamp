@@ -1,4 +1,8 @@
-export function Pagination({ currentPage, totalPages, onPageChange }) {
+export function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange = { onPageChange },
+}) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
   const styleLinkLeft = {
     opacity: currentPage === 1 ? 0.3 : 1,
