@@ -28,6 +28,14 @@ export function SearchFormSection({ onFiltersChange, filters }) {
               type="text"
               name="search-value"
               placeholder="Buscar trabajos, empresas o habilidades"
+              value={filters.searchText}
+              onChange={(event) => {
+                const inputText = {
+                  ...filters,
+                  searchText: event.target.value,
+                };
+                onFiltersChange(inputText);
+              }}
             />
           </div>
 
