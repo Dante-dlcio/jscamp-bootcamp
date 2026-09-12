@@ -1,8 +1,8 @@
-import { useRouter } from '../hooks/useRouter'
+import { useRouter } from "../hooks/useRouter";
 
-export function Route({ path, component: Component }) {
-  const { currentPath } = useRouter()
-  if (currentPath !== path) return null
+export function Route({ path, element }) {
+  const { currentPath } = useRouter();
+  if (currentPath !== path) return null;
 
-  return <Component />
+  return element;
 }
