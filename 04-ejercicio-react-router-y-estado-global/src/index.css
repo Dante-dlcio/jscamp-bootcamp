@@ -538,8 +538,11 @@ article {
   color: var(--text-muted);
 }
 
-.job-detail-header button {
+.job-detail-actions {
   grid-area: button;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .job-detail button {

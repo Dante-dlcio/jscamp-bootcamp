@@ -37,13 +37,15 @@ export function JobCard({ job }) {
         </small>
         <p>{job.descripcion}</p>
       </div>
-      <button
-        type="button"
-        className={buttonClasses}
-        onClick={handleApplyClick}
-      >
-        {buttonText}
-      </button>
+      {isLoggedIn && (
+        <button
+          type="button"
+          className={buttonClasses}
+          onClick={handleApplyClick}
+        >
+          {buttonText}
+        </button>
+      )}
       {isLoggedIn && (
         <button
           type="button"

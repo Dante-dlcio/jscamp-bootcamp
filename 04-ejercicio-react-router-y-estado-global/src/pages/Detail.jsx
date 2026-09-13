@@ -1,12 +1,18 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import snarkdown from "snarkdown";
+import { useAuthStore } from "../store/authStore";
+import { useFavoritesStore } from "../store/favoritesStore";
 
 export default function JobDetail() {
   const { id } = useParams();
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
+  const jobIsFavorite = useFavoritesStore((state) => state.isFavorite(id));
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     fetch(`https://jscamp-api.vercel.app/api/jobs/${id}`)
       .then((res) => {
@@ -41,7 +47,14 @@ export default function JobDetail() {
           <small>
             {job.empresa}·{job.ubicacion}
           </small>
-          <button>Aplicar a esta oferta</button>
+          <div className="job-detail-actions">
+            {isLoggedIn && (
+              <button type="button" onClick={() => toggleFavorite(job.id)}>
+                {jobIsFavorite ? "❤️" : "🤍"}
+              </button>
+            )}
+            {isLoggedIn && <button type="button">Aplicar a esta oferta</button>}
+          </div>
         </header>
         <div className="prose">
           <h2>Descripción del puesto</h2>
