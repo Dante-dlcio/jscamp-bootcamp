@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import snarkdown from "snarkdown";
 
-export function JobDetail() {
+export default function JobDetail() {
   const { id } = useParams();
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);

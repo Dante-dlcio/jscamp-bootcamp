@@ -3,5 +3,5 @@ export function Footer() {
     <footer>
       <small>&copy; 2025 DevJobs. Todos los derechos reservados.</small>
     </footer>
-  )
+  );
 }

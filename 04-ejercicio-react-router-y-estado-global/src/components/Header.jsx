@@ -1,10 +1,11 @@
-import { Link } from './Link'
+import { NavLink } from "react-router";
+import { Link } from "./Link";
 
 export function Header() {
   return (
     <header>
-      <Link href="/" style={{ textDecoration: 'none' }}>
-        <h1 style={{ color: 'white' }}>
+      <Link href="/" style={{ textDecoration: "none" }}>
+        <h1 style={{ color: "white" }}>
           <svg
             fill="none"
             stroke="currentColor"
@@ -22,10 +23,14 @@ export function Header() {
       </Link>
 
       <nav>
-        <Link href="/search">Empleos</Link>
-
-        <a href="/search">Sin SPA</a>
+        <NavLink
+          className={({ isActive }) => (isActive ? "navLinkIsActive" : "")}
+          to="/search"
+        >
+          Empleos
+        </NavLink>
+        <button type="button">Iniciar Sesión</button>
       </nav>
     </header>
-  )
+  );
 }
