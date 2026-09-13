@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { Link } from "./Link";
+import { useFavoritesStore } from "../store/favoritesStore";
+import { useAuthStore } from "../store/authStore";
 
 export function JobCard({ job }) {
   const [isApplied, setIsApplied] = useState(false);
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
+  const jobIsFavorite = useFavoritesStore((state) => state.isFavorite(job.id));
 
   const handleApplyClick = () => {
     setIsApplied(true);
@@ -32,9 +37,23 @@ export function JobCard({ job }) {
         </small>
         <p>{job.descripcion}</p>
       </div>
-      <button className={buttonClasses} onClick={handleApplyClick}>
+      <button
+        type="button"
+        className={buttonClasses}
+        onClick={handleApplyClick}
+      >
         {buttonText}
       </button>
+      {isLoggedIn && (
+        <button
+          type="button"
+          onClick={() => {
+            toggleFavorite(job.id);
+          }}
+        >
+          {jobIsFavorite ? "❤️" : "🤍"}
+        </button>
+      )}
     </article>
   );
 }
