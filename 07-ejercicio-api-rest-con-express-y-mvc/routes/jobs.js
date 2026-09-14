@@ -1,6 +1,7 @@
-import { Router } from 'express'
+import { Router } from "express";
+import { JobController } from "../controllers/jobs.js";
 
-export const jobsRouter = Router()
+export const jobsRouter = Router();
 
 /* Aquí debe ir la lógica de tus rutas */
 /* Recuerda que en tus rutas debes usar los controladores */
@@ -13,3 +14,5 @@ Deberás implementar:
 - Actualizar parcialmente un job por id [PATCH]
 - Eliminar un job por id [DELETE]
 */
+jobsRouter.get("/", JobController.getAll);
+jobsRouter.get("/:id", JobController.getId);
