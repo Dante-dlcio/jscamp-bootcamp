@@ -12,6 +12,7 @@ export default function JobDetail() {
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isApplied, setIsApplied] = useState(false);
 
   useEffect(() => {
     fetch(`https://jscamp-api.vercel.app/api/jobs/${id}`)
@@ -53,7 +54,11 @@ export default function JobDetail() {
                 {jobIsFavorite ? "❤️" : "🤍"}
               </button>
             )}
-            {isLoggedIn && <button type="button">Aplicar a esta oferta</button>}
+            {isLoggedIn && (
+              <button type="button" onClick={() => setIsApplied(true)}>
+                {isApplied ? "Aplicado" : "Aplicar"}
+              </button>
+            )}
           </div>
         </header>
         <div className="prose">

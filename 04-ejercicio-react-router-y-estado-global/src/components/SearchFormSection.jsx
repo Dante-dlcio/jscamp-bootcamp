@@ -107,7 +107,7 @@ export function SearchFormSection({
             ref={inputRef}
             name={idText}
             id="empleos-search-input"
-            type="text"
+            type="search"
             placeholder="Buscar trabajos, empresas o habilidades"
             onChange={handleTextChange}
             defaultValue={initialText}
