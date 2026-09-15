@@ -25,4 +25,32 @@ export class JobController {
     }
     return res.json(job);
   }
+  static create(req, res) {
+    const createJob = JobModel.create(req.body);
+    return res.status(201).json(createJob);
+  }
+  static update(req, res) {
+    const { id } = req.params;
+    const updatedJob = JobModel.update(id, req.body);
+    if (!updatedJob) {
+      return res.status(404).json({ error: "Job not found" });
+    }
+    return res.json(updatedJob);
+  }
+  static partialUpdate(req, res) {
+    const { id } = req.params;
+    const patchedJob = JobModel.partialUpdate(id, req.body);
+    if (!patchedJob) {
+      return res.status(404).json({ error: "Job not found" });
+    }
+    return res.json(patchedJob);
+  }
+  static delete(req, res) {
+    const { id } = req.params;
+    const deletedJob = JobModel.delete(id);
+    if (!deletedJob) {
+      return res.status(404).json({ error: "Job not found" });
+    }
+    return res.status(204).send();
+  }
 }
