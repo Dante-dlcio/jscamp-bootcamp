@@ -1,0 +1,26 @@
+name: 01 - Hello
+
+on:
+  workflow_dispatch:
+
+jobs:
+  saludar:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Saludar
+        run: echo "Hola desde GitHub Actions!"
+
+      - name: Mostrar fecha
+        run: date
+
+      - name: Listar archivos
+        run: ls -la
+
+  repo-files:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v6
+
+      - name: Listar archivos del repositorio
+        run: ls -la
