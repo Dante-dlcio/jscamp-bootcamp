@@ -24,5 +24,8 @@ jobsRouter.post('/', validateCreateJob, JobController.create)
 // PATCH /jobs/:id - Actualizar parcialmente un job
 jobsRouter.patch('/:id', validateUpdateJob, JobController.update)
 
+// PUT /jobs/:id - Actualizar un job (compatibilidad con la consigna)
+jobsRouter.put('/:id', validateUpdateJob, JobController.update)
+
 // DELETE /jobs/:id - Eliminar un job
 jobsRouter.delete('/:id', JobController.delete)
