@@ -1,2 +1,4 @@
 packages:
-  - 'projects/*'
+  - "projects/*"
+
+minimumReleaseAge: 0
