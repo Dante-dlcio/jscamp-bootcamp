@@ -1,11 +1,19 @@
 /* Pasa tu contenido de src/App.jsx aquí */
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { SearchFormSection } from "../components/SearchFormSection";
 import { SearchResultSection } from "../components/SearchResultsSection";
-import { Footer } from "../components/Footer";
 import jobs from "../data.json";
 const RESULTS_PER_PAGE = 5;
+
+/* Agrupamos las etiquetas equivalentes del data.json por cada opción del select (los datos usan "mid" y "mid-level" para el mismo nivel) */
+const LEVEL_MATCHES = {
+  junior: ["junior"],
+  mid: ["mid", "mid-level"],
+  senior: ["senior"],
+  lead: ["lead"],
+};
 
 export function Search() {
   const initialParams = new URLSearchParams(window.location.search);
@@ -64,10 +72,14 @@ export function Search() {
       (filters.technology === "" ||
         job.data.technology === filters.technology) &&
       (filters.location === "" || job.data.modalidad === filters.location) &&
-      (filters.experienceLevel === "" ||
-        job.data.nivel === filters.experienceLevel ||
-        (filters.experienceLevel === "mid" &&
-          job.data.nivel === "mid-level")) &&
+    /*
+    (filters.experienceLevel === "" ||
+      job.data.nivel === filters.experienceLevel ||
+      (filters.experienceLevel === "mid" &&
+        job.data.nivel === "mid-level")) &&
+    */
+    (filters.experienceLevel === "" ||
+      LEVEL_MATCHES[filters.experienceLevel]?.includes(job.data.nivel)) &&
       (debouncedSearchText === "" ||
         job.titulo.toLowerCase().includes(debouncedSearchText.toLowerCase()) ||
         job.empresa.toLowerCase().includes(debouncedSearchText.toLowerCase()) ||
