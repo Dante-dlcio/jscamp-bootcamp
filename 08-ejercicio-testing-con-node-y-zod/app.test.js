@@ -10,7 +10,7 @@
  */
 
 import assert from "node:assert/strict";
-import { before, after, describe, it } from "node:test";
+import { after, before, describe, it } from "node:test";
 
 const TEST_PORT = 5678;
 
@@ -40,6 +40,13 @@ describe("GET/jobs", () => {
     const response = await fetch(`${baseURL}/jobs?technology=react`);
     const json = await response.json();
     assert.strictEqual(response.status, 200);
+    // Aseguramos que haya resultados; si la lista viniera vacía, el "every" pasaría sin verificar nada
+    assert.ok(json.data.length > 0);
+
+    // Separamos los Assert por job: al fallar sabemos exactamente en qué job falló
+    for (const job of json.data) {
+      assert.ok(job.data.technology.some((tech) => tech.toLowerCase() === "react"));
+    }
     assert.ok(
       json.data.length > 0 &&
         json.data.every((job) =>
@@ -47,6 +54,7 @@ describe("GET/jobs", () => {
         ),
     );
   });
+
   it("respeta limit", async () => {
     const response = await fetch(`${baseURL}/jobs?limit=2`);
     const json = await response.json();
@@ -119,10 +127,14 @@ describe("POST/jobs", () => {
       },
       body: JSON.stringify(invalidJob),
     });
-    const json = await response.json();
+
+    // Verificamos el status antes de parsear la respuesta
     assert.strictEqual(response.status, 400);
+
+    const json = await response.json();
     assert.ok(json.error);
   });
+
   it("El titulo no puede exceder los 100 caracteres", async () => {
     const invalidJob = {
       ...validJob,
@@ -135,10 +147,14 @@ describe("POST/jobs", () => {
       },
       body: JSON.stringify(invalidJob),
     });
-    const json = await response.json();
+
+    // Lo mismo
     assert.strictEqual(response.status, 400);
+
+    const json = await response.json();
     assert.ok(json.error);
   });
+
   it("El job tiene que tener titulo", async () => {
     const { titulo, ...jobWithoutTitle } = validJob;
     const response = await fetch(`${baseURL}/jobs`, {
@@ -155,12 +171,13 @@ describe("POST/jobs", () => {
     const response = await fetch(`${baseURL}/jobs`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/JSON",
+        "Content-Type": "application/json", // Error de typo
       },
       body: JSON.stringify(invalidJob),
     });
     assert.strictEqual(response.status, 400);
   });
+
   it("permite crear un job sin descripción", async () => {
     const { descripcion, ...jobWithoutDescription } = validJob;
 
