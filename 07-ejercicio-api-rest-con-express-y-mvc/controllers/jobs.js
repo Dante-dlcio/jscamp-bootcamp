@@ -5,8 +5,22 @@ import { JobModel } from "../models/jobs.js";
 export class JobController {
   static getAll(req, res) {
     const { text, title, technology, level } = req.query;
+    /* Con Number() || default un limit=0 caía al default por accidente y los negativos pasaban sin control
     const limit = Number(req.query.limit) || DEFAULTS.LIMIT_PAGINATION;
     const offset = Number(req.query.offset) || DEFAULTS.LIMIT_OFFSET;
+    */
+
+    // Number.isInteger + < 0 descartan NaN, decimales, -Infinity, Infinity y negativos; solo aceptan enteros válidos y usan el default de config.js en caso contrario. Es la manera más estricta con pocas lineas de código de hacer una validación numérica.
+    const limitParam = Number(req.query.limit);
+    const offsetParam = Number(req.query.offset);
+    const limit =
+      !Number.isInteger(limitParam) || limitParam < 0
+        ? DEFAULTS.LIMIT_PAGINATION
+        : limitParam;
+    const offset =
+      !Number.isInteger(offsetParam) || offsetParam < 0
+        ? DEFAULTS.LIMIT_OFFSET
+        : offsetParam;
     const { data, total } = JobModel.getAll({
       text,
       title,
