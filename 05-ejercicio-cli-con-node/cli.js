@@ -9,6 +9,15 @@ const onlyFolders = args.includes("--folders");
 
 const directory = args.find((arg) => !arg.startsWith("--")) ?? ".";
 
+const hasPermission = process.permission?.has("fs.read", directory);
+
+/* En caso de que el usuario no haya ingresado los permisos requeridos, devolvemos un error y una sugerencia de como arreglarlo */
+if(!hasPermission) {
+  console.error(`⛔ No tienes permisos para leer "${directory}". Ejecuta:
+node --permission --allow-fs-read=${directory} cli.js ${directory}`);
+  process.exit(1);
+}
+
 let entries;
 try {
   entries = await readdir(directory);
