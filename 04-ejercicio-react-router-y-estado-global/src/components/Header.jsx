@@ -1,13 +1,14 @@
 import { NavLink } from "react-router";
-import { Link } from "./Link";
 import { useAuthStore } from "../store/authStore";
 import { useFavoritesStore } from "../store/favoritesStore";
+import { Link } from "./Link";
 
 export function Header() {
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const login = useAuthStore((state) => state.login);
   const logout = useAuthStore((state) => state.logout);
-  const favoritesCount = useFavoritesStore((state) => state.listFavorites());
+  // Podemos leer el dato directamente del estado, sin llamar funciones dentro del selector
+  const favoritesCount = useFavoritesStore((state) => state.favorites.length);
 
   return (
     <header>

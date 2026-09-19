@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { useState, useEffect } from "react";
 import snarkdown from "snarkdown";
+import { Link } from "../components/Link";
 import { useAuthStore } from "../store/authStore";
 import { useFavoritesStore } from "../store/favoritesStore";
 
@@ -8,7 +9,10 @@ export default function JobDetail() {
   const { id } = useParams();
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
   const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
-  const jobIsFavorite = useFavoritesStore((state) => state.isFavorite(id));
+  // hacemos lo mismo
+  const jobIsFavorite = useFavoritesStore((state) =>
+    state.favorites.includes(id),
+  );
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -39,7 +43,8 @@ export default function JobDetail() {
     <>
       <div className="job-detail">
         <nav>
-          <a href="/search">Empleos</a>
+          {/* Usamos Link para navegar sin recargar toda la página. Faltó acá */}
+          <Link href="/search">Empleos</Link>
           <span>/</span>
           <span>{job.titulo}</span>
         </nav>
