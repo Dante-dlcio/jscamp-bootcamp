@@ -1,6 +1,6 @@
 import crypto from 'node:crypto'
-import type { Job, CreateJobDTO, UpdateJobDTO, JobFilters } from '../types'
 import { db } from '../db/database'
+import type { CreateJobDTO, Job, JobFilters, UpdateJobDTO } from '../types'
 
 type JobRow = {
   id: string
@@ -84,6 +84,15 @@ const insertContent = db.prepare(`
     (id, job_id, description, responsibilities, requirements, about)
   VALUES (?, ?, ?, ?, ?, ?)
 `)
+
+// Esto que hacemos se llama Prepared statements a nivel de módulo: se compila una sola vez al arrancar y se reutiliza en cada llamada a update(), evitando recompilar por llamada. El `prepare` es una función pesada y es mejor ejecutarla una sola vez y no varias en cada consulta.
+const updateJobStmt = db.prepare(`
+  UPDATE jobs
+  SET title = ?, company = ?, location = ?, description = ?, modality = ?, level = ?
+  WHERE id = ?
+`)
+const deleteTechnologiesStmt = db.prepare('DELETE FROM job_technologies WHERE job_id = ?')
+const deleteContentStmt = db.prepare('DELETE FROM job_content WHERE job_id = ?')
 
 export class JobModel {
   static async getAll(filters?: JobFilters): Promise<Job[]> {
@@ -195,6 +204,39 @@ export class JobModel {
     }
 
     const updateJob = db.transaction(() => {
+      updateJobStmt.run(
+        updatedJob.title,
+        updatedJob.company,
+        updatedJob.location,
+        updatedJob.description,
+        updatedJob.data.modality,
+        updatedJob.data.level,
+        id,
+      )
+
+      if (input.data) {
+        deleteTechnologiesStmt.run(id)
+
+        for (const technology of updatedJob.data.technology) {
+          insertTechnology.run(id, technology)
+        }
+      }
+
+      if (input.content) {
+        deleteContentStmt.run(id)
+        insertContent.run(
+          `${id}-content`,
+          id,
+          input.content.description,
+          input.content.responsibilities,
+          input.content.requirements,
+          input.content.about,
+        )
+      }
+
+      /*
+      // Se preparaba las sentencias dentro de la transacción,
+      // lo que recompilaba el SQL en cada llamada a update()
       db.prepare(`
         UPDATE jobs
         SET title = ?, company = ?, location = ?, description = ?, modality = ?, level = ?
@@ -211,23 +253,12 @@ export class JobModel {
 
       if (input.data) {
         db.prepare('DELETE FROM job_technologies WHERE job_id = ?').run(id)
-
-        for (const technology of updatedJob.data.technology) {
-          insertTechnology.run(id, technology)
-        }
       }
 
       if (input.content) {
         db.prepare('DELETE FROM job_content WHERE job_id = ?').run(id)
-        insertContent.run(
-          `${id}-content`,
-          id,
-          input.content.description,
-          input.content.responsibilities,
-          input.content.requirements,
-          input.content.about,
-        )
       }
+      */
     })
 
     updateJob()
