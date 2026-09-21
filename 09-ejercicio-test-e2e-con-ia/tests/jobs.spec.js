@@ -1,18 +1,21 @@
 /* Aquí irá el código de tu test */
 
 // @ts-check
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
-const URL = "http://localhost:5173";
+/* const URL = "http://localhost:5173"; */
+const BASE_URL = "http://localhost:5173"; // existe una variable global llamada URL, puede dar conflictos el asignarle otro nombre. Mejor usemos una variable fuera del ámbito global. URL viene de "node:url"
 
 test("la pagina principal muestra el input de busqueda", async ({ page }) => {
-  await page.goto(URL);
+  /* await page.goto(URL); */
+  await page.goto(BASE_URL);
   const searchbox = page.getByRole("searchbox");
   await expect(searchbox).toBeVisible();
 });
 
 test("permite buscar empleos por tecnología", async ({ page }) => {
-  await page.goto(URL);
+  /* await page.goto(URL); */
+  await page.goto(BASE_URL);
   const searchbox = page.getByRole("searchbox");
   await searchbox.fill("React");
   const searchButton = page.getByRole("button", { name: "Buscar" });
@@ -26,7 +29,8 @@ test("permite buscar empleos por tecnología", async ({ page }) => {
 });
 
 test("permite aplicar a un empleo", async ({ page }) => {
-  await page.goto(URL);
+  /* await page.goto(URL); */
+  await page.goto(BASE_URL);
   const searchbox = page.getByRole("searchbox");
   await searchbox.fill("JavaScript");
 
@@ -62,7 +66,7 @@ test("permite aplicar a un empleo", async ({ page }) => {
 });
 
 test("filtra los empleos por ubicación remota", async ({ page }) => {
-  await page.goto(`${URL}/search`);
+  await page.goto(`${BASE_URL}/search`);
   const locationFilter = page.locator("#filter-location");
   await locationFilter.selectOption("remoto");
   const remoteResults = page.locator('article[data-modalidad="remoto"]');
@@ -74,7 +78,7 @@ test("filtra los empleos por ubicación remota", async ({ page }) => {
 });
 
 test("filtra los empleos por nivel senior", async ({ page }) => {
-  await page.goto(`${URL}/search`);
+  await page.goto(`${BASE_URL}/search`);
   const levelFilter = page.locator("#filter-experience-level");
   const seniorResponse = page.waitForResponse((response) =>
     response.url().includes("level=senior"),
@@ -85,9 +89,11 @@ test("filtra los empleos por nivel senior", async ({ page }) => {
   const results = page.getByRole("article");
   const nonSeniorResults = page.locator('article:not([data-nivel="senior"])');
   await expect(results.first()).toBeVisible();
-  await expect(nonSeniorResults).toHaveCount(0, {
+  /* await expect(nonSeniorResults).toHaveCount(0, {
     timeout: 10000,
-  });
+  }); */
+  // Esto ya tiene un timeout por defecto, ya reintenta hasta que el filtro se aplica
+  await expect(nonSeniorResults).toHaveCount(0);
 });
 
 test("permite navegar a la siguiente página de resultados", async ({
@@ -96,7 +102,8 @@ test("permite navegar a la siguiente página de resultados", async ({
   const initialResponse = page.waitForResponse((response) =>
     response.url().includes("/api/jobs"),
   );
-  await page.goto(`${URL}/search`);
+  /* await page.goto(`${URL}/search`); */
+  await page.goto(`${BASE_URL}/search`);
   await initialResponse;
   const firstJob = page.getByRole("article").first();
   await expect(firstJob).toBeVisible();
@@ -116,7 +123,8 @@ test("permite navegar a la siguiente página de resultados", async ({
 });
 
 test("muestra el detalle de un empleo y permite aplicar", async ({ page }) => {
-  await page.goto(`${URL}/search`);
+  /* await page.goto(`${URL}/search`); */
+  await page.goto(`${BASE_URL}/search`);
   const firstJob = page.getByRole("article").first();
   await expect(firstJob).toBeVisible();
   const firstJobLink = firstJob.getByRole("link").first();
