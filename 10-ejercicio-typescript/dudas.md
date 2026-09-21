@@ -25,3 +25,9 @@ const salaries = jobs
 De esa forma TypeScript ya entiende que salaries es number[] y Math.min y Math.max dejan de romper todo.
 
 Mi duda es si esta es la forma correcta o recomendada de resolverlo, o si hay una manera más simple de hacer que TypeScript mantenga el narrowing después del filter.
+
+
+**Respuesta:**
+
+Hola crack! Muy buena pregunta.
+La solución final que hiciste es la correcta.
